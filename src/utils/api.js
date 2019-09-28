@@ -19,6 +19,13 @@ async function fetchTopStories () {
   return data;
 }
 
+async function fetchNewStories () {
+  const response = await fetch(`${api_url}/newstories${params}`);
+  const data = await response.json();
+
+  return data;
+}
+
 export async function fetchTopStoriesData(storiesToFetch = 500, startingIndex = 0) {
   const storyList = await fetchTopStories();
   const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
@@ -30,12 +37,18 @@ export async function fetchTopStoriesData(storiesToFetch = 500, startingIndex = 
   return stories;
 }
 
-export async function fetchNewStories () {
-  const response = await fetch(`${api_url}/newstories${params}`);
-  const data = await response.json();
-
-  return data;
+export async function fetchNewStoriesData(storiesToFetch = 500, startingIndex = 0) {
+  const storyList = await fetchNewStories();
+  const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
+  const stories = trimmedList.reduce((data, storyId) => {
+    fetchItem(storyId).then(story => {data.push(story)});
+    return data;
+  }, [])
+  console.log(stories);
+  return stories;
 }
+
+
 
 export async function fetchUser(user) {
   const response = await fetch(`${api_url}/user/${user}${params}`)
