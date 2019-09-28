@@ -12,11 +12,22 @@ async function fetchItem(id) {
   }
 }
 
-export async function fetchTopStories () {
+async function fetchTopStories () {
   const response = await fetch(`${api_url}/topstories${params}`);
   const data = await response.json();
 
   return data;
+}
+
+export async function fetchTopStoriesData(storiesToFetch = 500, startingIndex = 0) {
+  const storyList = await fetchTopStories();
+  const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
+  const stories = trimmedList.reduce((data, storyId) => {
+    fetchItem(storyId).then(story => {data.push(story)});
+    return data;
+  }, [])
+  console.log(stories);
+  return stories;
 }
 
 export async function fetchNewStories () {
@@ -35,6 +46,7 @@ export async function fetchUser(user) {
 
 export async function fetchUserPosts(user, numberOfComments) {
   const posts = [];
+  //TODO: Rewrite using reduce
   user.submitted.forEach(async (id, index) => {
     if (index < numberOfComments) {
       let post = await fetchItem(id);
@@ -50,6 +62,7 @@ export async function fetchStoryWithComments(storyId) {
   if (!story.kids) return story;
   const fullStory = {...story}
   const kids = [];
+  //TODO: Rewrite using reduce
   fullStory.kids.forEach(async (id) => {
     let kid = await fetchStoryWithComments(id);
     kids.push(kid);
