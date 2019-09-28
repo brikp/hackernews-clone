@@ -8,7 +8,7 @@ async function fetchItem(id) {
     return data;
   }
   catch (e){
-    console.log(`Error: ${e}`);
+    throw new Error(e);
   }
 }
 
@@ -29,23 +29,23 @@ async function fetchNewStories () {
 export async function fetchTopStoriesData(storiesToFetch = 500, startingIndex = 0) {
   const storyList = await fetchTopStories();
   const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
-  const stories = trimmedList.reduce((data, storyId) => {
-    fetchItem(storyId).then(story => {data.push(story)});
-    return data;
+  const promisesToCall = trimmedList.reduce((promises, storyId) => {
+    let fn = fetchItem(storyId);
+    promises.push(fn);
+    return promises;
   }, [])
-  console.log(stories);
-  return stories;
+  return Promise.all(promisesToCall).then((data) => data);
 }
 
 export async function fetchNewStoriesData(storiesToFetch = 500, startingIndex = 0) {
   const storyList = await fetchNewStories();
   const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
-  const stories = trimmedList.reduce((data, storyId) => {
-    fetchItem(storyId).then(story => {data.push(story)});
-    return data;
+  const promisesToCall = trimmedList.reduce((promises, storyId) => {
+    let fn = fetchItem(storyId);
+    promises.push(fn);
+    return promises;
   }, [])
-  console.log(stories);
-  return stories;
+  return Promise.all(promisesToCall).then((data) => data);
 }
 
 
@@ -58,28 +58,37 @@ export async function fetchUser(user) {
 }
 
 export async function fetchUserPosts(user, numberOfComments) {
-  const posts = [];
-  //TODO: Rewrite using reduce
-  user.submitted.forEach(async (id, index) => {
-    if (index < numberOfComments) {
-      let post = await fetchItem(id);
-      posts.push(post);
-    }
-    else return;
-  });
-  return posts;
+  const promisesToCall = user.submitted.reduce((promises, id, index) => {
+    if (index > numberOfComments) return promises;
+    let fn = fetchItem(id);
+    promises.push(fn);
+    return promises;
+  }, []);
+  return Promise.all(promisesToCall).then((data) => data);
 }
 
 export async function fetchStoryWithComments(storyId) {
   const story = await fetchItem(storyId);
   if (!story.kids) return story;
-  const fullStory = {...story}
-  const kids = [];
-  //TODO: Rewrite using reduce
-  fullStory.kids.forEach(async (id) => {
-    let kid = await fetchStoryWithComments(id);
-    kids.push(kid);
-  })
-  fullStory.kids = kids;
-  return fullStory;
+  const promisesToCall = story.kids.map((commentId) => {
+    let fn = fetchItem(commentId);
+    return fn;
+  });
+  const comments = Promise.add(promisesToCall).then((data) => data);
+  story.kids = comments;
+  return story;
 }
+
+// export async function fetchStoryWithComments(storyId) {
+//   const story = await fetchItem(storyId);
+//   if (!story.kids) return story;
+//   const fullStory = {...story}
+//   const kids = [];
+//   //TODO: Rewrite using reduce
+//   fullStory.kids.forEach(async (id) => {
+//     let kid = await fetchStoryWithComments(id);
+//     kids.push(kid);
+//   })
+//   fullStory.kids = kids;
+//   return fullStory;
+// }
