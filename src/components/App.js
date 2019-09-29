@@ -1,8 +1,11 @@
 import React from 'react';
+import Top from './Top';
 
 function App() {
   return (
-    <div>Hello World</div>
+    <React.Fragment>
+      <Top />
+    </React.Fragment>
   );
 }
 

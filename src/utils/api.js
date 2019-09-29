@@ -1,26 +1,25 @@
-const api_url = 'https://hacker-news.firebaseio.com/v0';
-const params ='.json';
+const apiURL = 'https://hacker-news.firebaseio.com/v0';
+const params = '.json';
 
 async function fetchItem(id) {
   try {
-    const response = await fetch(`${api_url}/item/${id}${params}`)
+    const response = await fetch(`${apiURL}/item/${id}${params}`)
     const data = await response.json();
     return data;
-  }
-  catch (e){
+  } catch (e) {
     throw new Error(e);
   }
 }
 
-async function fetchTopStories () {
-  const response = await fetch(`${api_url}/topstories${params}`);
+async function fetchTopStories() {
+  const response = await fetch(`${apiURL}/topstories${params}`);
   const data = await response.json();
 
   return data;
 }
 
-async function fetchNewStories () {
-  const response = await fetch(`${api_url}/newstories${params}`);
+async function fetchNewStories() {
+  const response = await fetch(`${apiURL}/newstories${params}`);
   const data = await response.json();
 
   return data;
@@ -30,10 +29,10 @@ export async function fetchTopStoriesData(storiesToFetch = 500, startingIndex = 
   const storyList = await fetchTopStories();
   const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
   const promisesToCall = trimmedList.reduce((promises, storyId) => {
-    let fn = fetchItem(storyId);
+    const fn = fetchItem(storyId);
     promises.push(fn);
     return promises;
-  }, [])
+  }, []);
   return Promise.all(promisesToCall).then((data) => data);
 }
 
@@ -41,17 +40,15 @@ export async function fetchNewStoriesData(storiesToFetch = 500, startingIndex = 
   const storyList = await fetchNewStories();
   const trimmedList = storyList.slice(startingIndex, startingIndex + storiesToFetch);
   const promisesToCall = trimmedList.reduce((promises, storyId) => {
-    let fn = fetchItem(storyId);
+    const fn = fetchItem(storyId);
     promises.push(fn);
     return promises;
-  }, [])
+  }, []);
   return Promise.all(promisesToCall).then((data) => data);
 }
 
-
-
 export async function fetchUser(user) {
-  const response = await fetch(`${api_url}/user/${user}${params}`)
+  const response = await fetch(`${apiURL}/user/${user}${params}`)
   const data = await response.json();
 
   return data;
@@ -60,7 +57,7 @@ export async function fetchUser(user) {
 export async function fetchUserPosts(user, numberOfComments) {
   const promisesToCall = user.submitted.reduce((promises, id, index) => {
     if (index > numberOfComments) return promises;
-    let fn = fetchItem(id);
+    const fn = fetchItem(id);
     promises.push(fn);
     return promises;
   }, []);
@@ -71,7 +68,7 @@ export async function fetchStoryWithComments(storyId) {
   const story = await fetchItem(storyId);
   if (!story.kids) return story;
   const promisesToCall = story.kids.map((commentId) => {
-    let fn = fetchItem(commentId);
+    const fn = fetchItem(commentId);
     return fn;
   });
   const comments = Promise.add(promisesToCall).then((data) => data);

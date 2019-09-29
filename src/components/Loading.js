@@ -8,22 +8,24 @@ const styles = {
     left: '0',
     right: '0',
     marginTop: '20px',
-    textAlign: 'center'
-  }
-}
+    textAlign: 'center',
+  },
+};
 
 export default class Loading extends React.Component {
   state = {
-    content: this.props.text
+    content: this.props.text,
   }
 
   componentDidMount() {
     const { text, speed } = this.props;
+    const { content } = this.state;
 
     this.interval = window.setInterval(() => {
-      this.state.content === text + '...'
+      content === `${text}...`
         ? this.setState({ content: text })
-        : this.setState(({ content }) => ({ content: content + '.'}))
+        // eslint-disable-next-line no-shadow
+        : this.setState(({ content }) => ({ content: `${content}.` }));
     }, speed);
   }
 
@@ -32,20 +34,21 @@ export default class Loading extends React.Component {
   }
 
   render() {
+    const { content } = this.state;
     return (
       <p style={styles.content}>
-        {this.state.content}
+        {content}
       </p>
-    )
+    );
   }
 }
 
 Loading.propTypes = {
-  text: PropTypes.string.isRequired,
-  speed: PropTypes.number.isRequired
+  text: PropTypes.string,
+  speed: PropTypes.number,
 };
 
 Loading.defaultProps = {
   text: 'Loading',
-  speed: 250
+  speed: 250,
 };
