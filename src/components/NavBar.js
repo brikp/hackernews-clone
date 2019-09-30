@@ -7,6 +7,8 @@ export default function NavBar() {
       <ul>
         <li>
           <NavLink to="/" exact>Top</NavLink>
+        </li>
+        <li>
           <NavLink to="/new">New</NavLink>
         </li>
       </ul>
