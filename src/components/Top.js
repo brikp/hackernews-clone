@@ -1,35 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { fetchTopStoriesData } from '../utils/api';
 import Loading from './Loading';
-
-function StoryList({ data }) {
-  return (
-    <ul>
-      {data.map((story) => {
-        const {
-          id,
-          score,
-          title,
-          url,
-        } = story;
-
-        return (
-          <li key={id}>
-            <p>{`ID: ${id}`}</p>
-            <p>{`Score: ${score}`}</p>
-            <p>{`Title: ${title}`}</p>
-            <p>{`URL: ${url}`}</p>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-StoryList.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+import StoryList from './StoryList';
 
 export default class Top extends React.Component {
   state = {
@@ -63,7 +35,7 @@ export default class Top extends React.Component {
 
         {error && <p>{error}</p>}
 
-        {stories.length && <StoryList data={stories} />}
+        {stories.length && <StoryList stories={stories} />}
       </React.Fragment>
     );
   }
