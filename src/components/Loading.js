@@ -19,9 +19,10 @@ export default class Loading extends React.Component {
 
   componentDidMount() {
     const { text, speed } = this.props;
-    const { content } = this.state;
+
 
     this.interval = window.setInterval(() => {
+      const { content } = this.state;
       content === `${text}...`
         ? this.setState({ content: text })
         // eslint-disable-next-line no-shadow
