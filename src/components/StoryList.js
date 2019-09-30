@@ -14,6 +14,7 @@ export default function StoryList({ stories }) {
         const {
           by, descendants, id, time, title, url, type,
         } = story;
+        const dateTime = convertUnixToDateTimeString(time);
         if (type !== 'story') return null;
         return (
           <li key={id}>
@@ -21,8 +22,9 @@ export default function StoryList({ stories }) {
               by={by}
               descendants={descendants}
               title={title}
-              time={convertUnixToDateTimeString(time)}
+              time={dateTime}
               url={url}
+              id={id}
             />
           </li>
         );

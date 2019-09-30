@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function StoryCard({ by, descendants, time, title, url }) {
+export default function StoryCard({
+  by, descendants, time, title, url, id,
+}) {
   return (
     <React.Fragment>
       <div>
@@ -13,11 +15,11 @@ export default function StoryCard({ by, descendants, time, title, url }) {
         <h4>
           {' by '}
           {/* TODO: Add route to User page */}
-          <a href="Placeholder">{by}</a>
+          <a href={`/user?id=${by}`}>{by}</a>
           {' on '}
           {time}
           {' with '}
-          <a href="Placeholder">{descendants}</a>
+          <a href={`/post?id=${id}`}>{descendants}</a>
           {' comments'}
         </h4>
       </div>
@@ -31,4 +33,5 @@ StoryCard.propTypes = {
   time: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
