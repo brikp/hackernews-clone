@@ -1,10 +1,10 @@
 import React from 'react';
-import { fetchTopStoriesData } from '../utils/api';
+import { fetchNewStoriesData } from '../utils/api';
 import Loading from './Loading';
 import StoryList from './StoryList';
 
 // TODO: Refactor Top/New components to minimize code repetition
-export default class Top extends React.Component {
+export default class New extends React.Component {
   state = {
     stories: [],
     error: null,
@@ -12,7 +12,7 @@ export default class Top extends React.Component {
   }
 
   componentDidMount() {
-    fetchTopStoriesData(50)
+    fetchNewStoriesData(50)
       .then((data) => {
         this.setState({ stories: data, loading: false });
       })
@@ -32,7 +32,7 @@ export default class Top extends React.Component {
 
     return (
       <React.Fragment>
-        {loading && <Loading text="Fetching top stories" />}
+        {loading && <Loading text="Fetching new stories" />}
 
         {error && <p>{error}</p>}
 

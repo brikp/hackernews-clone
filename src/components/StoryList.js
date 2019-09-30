@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StoryCard from './StoryCard';
 
-function convertUnixToDateTimeString(unixTime) {
+function convertUnixTimeToDateTimeString(unixTime) {
   const time = new Date(unixTime * 1000).toUTCString();
   return time;
 }
@@ -14,7 +14,10 @@ export default function StoryList({ stories }) {
         const {
           by, descendants, id, time, title, url, type,
         } = story;
-        const dateTime = convertUnixToDateTimeString(time);
+        const dateTime = convertUnixTimeToDateTimeString(time);
+
+        // If there is no URL - this is a askHN story and should link to /post route
+        const checkedUrl = url || `/post?id=${id}`;
         if (type !== 'story') return null;
         return (
           <li key={id}>
@@ -23,7 +26,7 @@ export default function StoryList({ stories }) {
               descendants={descendants}
               title={title}
               time={dateTime}
-              url={url}
+              url={checkedUrl}
               id={id}
             />
           </li>

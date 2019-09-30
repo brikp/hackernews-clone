@@ -14,7 +14,6 @@ export default function StoryCard({
       <div>
         <h4>
           {' by '}
-          {/* TODO: Add route to User page */}
           <a href={`/user?id=${by}`}>{by}</a>
           {' on '}
           {time}
