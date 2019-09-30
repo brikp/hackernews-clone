@@ -26,6 +26,9 @@ module.exports = {
     "react/jsx-fragments": ["error", 'element'],
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     'no-unused-expressions': ["error", { "allowTernary": true }],
-    "react/destructuring-assignment": ["error", "always", { "ignoreClassFields": true }]
+    "react/destructuring-assignment": ["error", "always", { "ignoreClassFields": true }],
+    "object-curly-newline": ["error", {
+      "ObjectPattern": { "multiline": true, "minProperties": 6 }
+  }]
   },
 };
