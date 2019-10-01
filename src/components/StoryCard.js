@@ -49,7 +49,7 @@ export default function StoryCard({
 
 StoryCard.propTypes = {
   by: PropTypes.string.isRequired,
-  kids: PropTypes.arrayOf(PropTypes.number).isRequired,
+  kids: PropTypes.arrayOf(PropTypes.object).isRequired,
   time: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,

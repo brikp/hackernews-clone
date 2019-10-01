@@ -1,8 +1,10 @@
 import React from 'react';
 import queryString from 'query-string';
-import { fetchStoryWithComments, fetchItem } from '../utils/api';
+import PropTypes from 'prop-types';
+import { fetchStoryComments, fetchItem } from '../utils/api';
 import Loading from './Loading';
 import StoryCard from './StoryCard';
+import CommentList from './CommentList';
 
 export default class Post extends React.Component {
   state = {
@@ -18,9 +20,9 @@ export default class Post extends React.Component {
     fetchItem(id)
       .then((story) => {
         this.setState({ story, loadingStory: false });
-        fetchStoryWithComments(story)
+        fetchStoryComments(story)
           .then((res) => {
-            this.setState({ comments: res.kids, loadingComments: false });
+            this.setState({ comments: res, loadingComments: false });
           });
       });
   }
@@ -44,7 +46,14 @@ export default class Post extends React.Component {
           />
         )}
 
+        {comments && <CommentList comments={comments} />}
+
       </React.Fragment>
     );
   }
 }
+
+Post.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  location: PropTypes.object.isRequired,
+};
