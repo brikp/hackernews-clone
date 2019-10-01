@@ -3,7 +3,7 @@ const params = '.json';
 
 export async function fetchItem(id) {
   try {
-    const response = await fetch(`${apiURL}/item/${id}${params}`)
+    const response = await fetch(`${apiURL}/item/${id}${params}`);
     const data = await response.json();
     return data;
   } catch (e) {
@@ -48,7 +48,7 @@ export async function fetchNewStoriesData(storiesToFetch = 500, startingIndex = 
 }
 
 export async function fetchUser(user) {
-  const response = await fetch(`${apiURL}/user/${user}${params}`)
+  const response = await fetch(`${apiURL}/user/${user}${params}`);
   const data = await response.json();
 
   return data;
