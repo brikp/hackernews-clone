@@ -64,13 +64,11 @@ export async function fetchUserPosts(user, numberOfComments) {
   return Promise.all(promisesToCall).then((data) => data);
 }
 
-export async function fetchStoryWithComments(story) {
-  const storyWithComments = { ...story };
+export async function fetchStoryComments(story) {
   if (!story.kids) return story;
   const promisesToCall = story.kids.map((commentId) => {
     const fn = fetchItem(commentId);
     return fn;
   });
-  Promise.all(promisesToCall).then((data) => { storyWithComments.kids = data; });
-  return storyWithComments;
+  return Promise.all(promisesToCall).then((data) => data);
 }
