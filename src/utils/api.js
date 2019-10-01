@@ -1,7 +1,7 @@
 const apiURL = 'https://hacker-news.firebaseio.com/v0';
 const params = '.json';
 
-async function fetchItem(id) {
+export async function fetchItem(id) {
   try {
     const response = await fetch(`${apiURL}/item/${id}${params}`)
     const data = await response.json();
@@ -64,28 +64,13 @@ export async function fetchUserPosts(user, numberOfComments) {
   return Promise.all(promisesToCall).then((data) => data);
 }
 
-export async function fetchStoryWithComments(storyId) {
-  const story = await fetchItem(storyId);
+export async function fetchStoryWithComments(story) {
+  const storyWithComments = { ...story };
   if (!story.kids) return story;
   const promisesToCall = story.kids.map((commentId) => {
     const fn = fetchItem(commentId);
     return fn;
   });
-  const comments = Promise.add(promisesToCall).then((data) => data);
-  story.kids = comments;
-  return story;
+  Promise.all(promisesToCall).then((data) => { storyWithComments.kids = data; });
+  return storyWithComments;
 }
-
-// export async function fetchStoryWithComments(storyId) {
-//   const story = await fetchItem(storyId);
-//   if (!story.kids) return story;
-//   const fullStory = {...story}
-//   const kids = [];
-//   //TODO: Rewrite using reduce
-//   fullStory.kids.forEach(async (id) => {
-//     let kid = await fetchStoryWithComments(id);
-//     kids.push(kid);
-//   })
-//   fullStory.kids = kids;
-//   return fullStory;
-// }
