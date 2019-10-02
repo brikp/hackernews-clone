@@ -22,7 +22,7 @@ class App extends React.Component {
     const { theme } = this.state;
     const style = theme === 'light' ? { background: 'rgb(255, 215, 0)' } : { background: 'rgb(255, 191, 116)' };
     return (
-      <Router basename="/">
+      <Router basename={`${process.env.PUBLIC_URL}/`}>
         <ThemeProvider value={this.state}>
           <div style={style}>
             <NavBar />
