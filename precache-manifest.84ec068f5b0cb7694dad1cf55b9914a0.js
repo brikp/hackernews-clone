@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "34a6bab3a1c558f326fbed07ee45bf31",
+    "revision": "bc61c63c7daf33065888b94afdab43b8",
     "url": "/brikp/hackerrank-api/index.html"
   },
   {
-    "revision": "4cec619dc9f378bcb168",
+    "revision": "6bed992f0912440329c9",
     "url": "/brikp/hackerrank-api/static/css/main.d498bfb3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/brikp/hackerrank-api/static/js/2.02273377.chunk.js"
   },
   {
-    "revision": "4cec619dc9f378bcb168",
-    "url": "/brikp/hackerrank-api/static/js/main.805a1286.chunk.js"
+    "revision": "6bed992f0912440329c9",
+    "url": "/brikp/hackerrank-api/static/js/main.4275273b.chunk.js"
   },
   {
     "revision": "162ebbcc5d4af981f876",

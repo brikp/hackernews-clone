@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/brikp/hackerrank-api/precache-manifest.b5f1a75d1772c34548578d7e6f198132.js"
+  "/brikp/hackerrank-api/precache-manifest.84ec068f5b0cb7694dad1cf55b9914a0.js"
 );
 
 self.addEventListener('message', (event) => {
