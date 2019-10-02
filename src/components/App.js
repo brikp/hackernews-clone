@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './NavBar';
 import Top from './Top';
 import New from './New';
@@ -22,7 +22,7 @@ class App extends React.Component {
     const { theme } = this.state;
     const style = theme === 'light' ? { background: 'rgb(255, 215, 0)' } : { background: 'rgb(255, 191, 116)' };
     return (
-      <Router basename={`${process.env.PUBLIC_URL}/`}>
+      <Router>
         <ThemeProvider value={this.state}>
           <div style={style}>
             <NavBar />
