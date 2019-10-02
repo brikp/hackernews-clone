@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/brikp/hackerrank-api/static/css/main.d498bfb3.chunk.css",
+    "main.js": "/brikp/hackerrank-api/static/js/main.a1a499c5.chunk.js",
+    "main.js.map": "/brikp/hackerrank-api/static/js/main.a1a499c5.chunk.js.map",
+    "runtime-main.js": "/brikp/hackerrank-api/static/js/runtime-main.b28ba49b.js",
+    "runtime-main.js.map": "/brikp/hackerrank-api/static/js/runtime-main.b28ba49b.js.map",
+    "static/js/2.ea6ddb06.chunk.js": "/brikp/hackerrank-api/static/js/2.ea6ddb06.chunk.js",
+    "static/js/2.ea6ddb06.chunk.js.map": "/brikp/hackerrank-api/static/js/2.ea6ddb06.chunk.js.map",
+    "index.html": "/brikp/hackerrank-api/index.html",
+    "precache-manifest.ceaae63ef7cf3f5957415b2c1ecfaba1.js": "/brikp/hackerrank-api/precache-manifest.ceaae63ef7cf3f5957415b2c1ecfaba1.js",
+    "service-worker.js": "/brikp/hackerrank-api/service-worker.js",
+    "static/css/main.d498bfb3.chunk.css.map": "/brikp/hackerrank-api/static/css/main.d498bfb3.chunk.css.map"
+  }
+}
