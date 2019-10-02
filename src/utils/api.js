@@ -47,8 +47,8 @@ export async function fetchNewStoriesData(storiesToFetch = 500, startingIndex = 
   return Promise.all(promisesToCall).then((data) => data);
 }
 
-export async function fetchUser(user) {
-  const response = await fetch(`${apiURL}/user/${user}${params}`);
+export async function fetchUser(userId) {
+  const response = await fetch(`${apiURL}/user/${userId}${params}`);
   const data = await response.json();
 
   return data;
@@ -65,7 +65,7 @@ export async function fetchUserPosts(user, numberOfComments) {
 }
 
 export async function fetchStoryComments(story) {
-  if (!story.kids) return story;
+  if (!story.kids) return [];
   const promisesToCall = story.kids.map((commentId) => {
     const fn = fetchItem(commentId);
     return fn;

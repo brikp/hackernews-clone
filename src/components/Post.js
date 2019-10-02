@@ -33,7 +33,7 @@ export default class Post extends React.Component {
       <React.Fragment>
         {loadingStory && <Loading text="Fetching story" />}
 
-        {loadingComments && <Loading text="Fetching comments" />}
+        {(!loadingStory && loadingComments) && <Loading text="Fetching comments" />}
 
         {story && (
           <StoryCard

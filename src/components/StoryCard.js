@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-function convertUnixTimeToDateTimeString(unixTime) {
-  const time = new Date(unixTime * 1000).toUTCString();
-  return time;
-}
+import { convertUnixTimeToDateTimeString } from '../utils/commonFunctions';
 
 export default function StoryCard({
   by, time, title, url, id, kids,
@@ -49,7 +45,7 @@ export default function StoryCard({
 
 StoryCard.propTypes = {
   by: PropTypes.string.isRequired,
-  kids: PropTypes.arrayOf(PropTypes.object).isRequired,
+  kids: PropTypes.arrayOf(PropTypes.number).isRequired,
   time: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,

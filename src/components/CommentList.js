@@ -5,7 +5,7 @@ import CommentCard from './CommentCard';
 export default function CommentList({ comments }) {
   return (
     <ul>
-      {comments.map((comment) => {
+      {comments.length > 0 && comments.map((comment) => {
         const { id, by, time, text } = comment;
 
         return (
