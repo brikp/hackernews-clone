@@ -24,7 +24,6 @@ export default function PostCard({ by, time, text }) {
   );
 }
 
-
 PostCard.propTypes = {
   by: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,

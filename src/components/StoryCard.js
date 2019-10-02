@@ -45,7 +45,8 @@ export default function StoryCard({
 
 StoryCard.propTypes = {
   by: PropTypes.string.isRequired,
-  kids: PropTypes.arrayOf(PropTypes.number).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  kids: PropTypes.array.isRequired,
   time: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
