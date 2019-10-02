@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {convertUnixTimeToDateTimeString, createMarkup } from '../utils/commonFunctions';
+import { convertUnixTimeToDateTimeString, createMarkup } from '../utils/commonFunctions';
 
 export default function PostCard({ by, time, text }) {
   const dateTime = convertUnixTimeToDateTimeString(time);

@@ -22,12 +22,10 @@ export default class User extends React.Component {
         this.setState({ user, loadingUser: false });
         fetchUserPosts(user, 20)
           .then((posts) => {
-            console.log(posts);
             const userStories = posts.reduce((stories, value) => {
               if (value.type === 'story') stories.push(value);
               return stories;
             }, []);
-            console.log(userStories);
             this.setState({ posts: userStories, loadingPosts: false });
           });
       });
