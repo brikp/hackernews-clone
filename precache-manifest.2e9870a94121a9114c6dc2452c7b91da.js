@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bc61c63c7daf33065888b94afdab43b8",
+    "revision": "2ef536e5ae076a596c5e9851903b31d1",
     "url": "/brikp/hackerrank-api/index.html"
   },
   {
