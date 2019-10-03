@@ -37,8 +37,6 @@ export default class User extends React.Component {
       <div className="content">
         {loadingUser && <Loading text="Fetching user data" />}
 
-        {(!loadingUser && loadingPosts) && <Loading text="Fetching user stories" />}
-
         {user && (
           <div>
             <h1>{user.id}</h1>
@@ -59,6 +57,8 @@ export default class User extends React.Component {
             && <p dangerouslySetInnerHTML={createMarkup(user.about)} />}
           </div>
         )}
+
+        {(!loadingUser && loadingPosts) && <Loading text="Fetching user stories" />}
 
         {posts && (
           <div>
