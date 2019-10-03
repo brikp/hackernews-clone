@@ -34,7 +34,7 @@ export default class User extends React.Component {
   render() {
     const { user, posts, loadingPosts, loadingUser } = this.state;
     return (
-      <React.Fragment>
+      <div className="content">
         {loadingUser && <Loading text="Fetching user data" />}
 
         {(!loadingUser && loadingPosts) && <Loading text="Fetching user stories" />}
@@ -42,7 +42,17 @@ export default class User extends React.Component {
         {user && (
           <div>
             <h1>{user.id}</h1>
-            <h4>{`joined ${convertUnixTimeToDateTimeString(user.created)} has ${user.karma} karma`}</h4>
+            <h4>
+              joined
+              <strong>
+                {` ${convertUnixTimeToDateTimeString(user.created)} `}
+              </strong>
+              has
+              <strong>
+                {` ${user.karma} `}
+              </strong>
+              karma
+            </h4>
 
             {user.about
             // eslint-disable-next-line react/no-danger
@@ -58,7 +68,7 @@ export default class User extends React.Component {
               : <p>This user did not submit any stories yet</p>}
           </div>
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }

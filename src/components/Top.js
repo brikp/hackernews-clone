@@ -22,17 +22,17 @@ export default class Top extends React.Component {
       });
   }
 
-  // isLoading = () => {
-  //   const { stories, error } = this.state;
-  //   return !stories && error === null;
-  // }
+  isLoading = () => {
+    const { loading } = this.state;
+    return loading;
+  }
 
   render() {
-    const { stories, error, loading } = this.state;
+    const { stories, error } = this.state;
 
     return (
       <React.Fragment>
-        {loading && <Loading text="Fetching top stories" />}
+        {this.isLoading() && <Loading text="Fetching top stories" />}
 
         {error && <p>{error}</p>}
 
