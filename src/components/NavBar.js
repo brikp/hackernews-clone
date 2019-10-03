@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa';
 import { ThemeConsumer } from '../contexts/theme';
 
 const style = {
@@ -19,6 +20,11 @@ export default function NavBar() {
               <NavLink to="/new" activeStyle={style} className={`nav-link-${theme}`}>New</NavLink>
             </li>
           </ul>
+          <p id="gh-icon">
+            <a href="https://github.com/brikp/hackerrank-api" target="blank">
+              <FaGithub color="#FF6B6B" size={20} />
+            </a>
+          </p>
           <button
             style={{ fontSize: 30 }}
             className="btn-clear"
