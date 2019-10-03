@@ -3,12 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { ThemeConsumer } from '../contexts/theme';
 
 const style = {
-  dark: {
-    color: '#F7FFF7',
-  },
-  light: {
-    color: '#FF6B6B',
-  },
+  color: '#FF6B6B',
 };
 
 export default function NavBar() {
@@ -18,10 +13,10 @@ export default function NavBar() {
         <nav className="row nav">
           <ul className="row">
             <li>
-              <NavLink exact to="/" activeStyle={style[theme]} className="nav-link">Top</NavLink>
+              <NavLink exact to="/" activeStyle={style} className={`nav-link-${theme}`}>Top</NavLink>
             </li>
             <li>
-              <NavLink to="/new" activeStyle={style[theme]} className="nav-link">New</NavLink>
+              <NavLink to="/new" activeStyle={style} className={`nav-link-${theme}`}>New</NavLink>
             </li>
           </ul>
           <button

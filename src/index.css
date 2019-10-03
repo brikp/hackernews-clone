@@ -13,16 +13,17 @@ body {
 }
 
 p {
-  color: rgb(26, 71, 78);
   letter-spacing: 0.35px;
 }
 
 .light {
   background-color: #F7FFF7;
+  color: rgb(26, 71, 78);
 }
 
 .dark {
   background-color: #0F2E33;
+  color: #CCE4E8;
 }
 
 .container {
@@ -41,12 +42,20 @@ p {
   margin-left: auto;
 }
 
-.nav-link {
+.nav-link-light {
   text-decoration: none;
   margin-right: 15px;
   font-size: 20px;
   font-weight: 700;
   color: black;
+}
+
+.nav-link-dark {
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(211, 235, 238);
 }
 
 .row {
@@ -72,12 +81,12 @@ li {
   background: transparent;
 }
 
-.link-story-light {
+.link-story-light, .link-story-dark {
   color: #FF6B6B;
   text-decoration: none;
 }
 
-.link-minor-light {
+.link-minor-light, .link-minor-dark {
   color: #4ECDC4;
   text-decoration: none;
 }
@@ -101,24 +110,50 @@ h4 {
 }
 
 .comment-card {
-  background-color: rgb(213, 247, 244);
+  /* background-color: rgb(213, 247, 244); */
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
-  box-shadow: 1px 1px 1px #0F2E33;
+  /* box-shadow: 1px 1px 1px #0F2E33; */
 }
 
 .comment-card h4 {
-  color: rgb(52, 128, 122);
+  /* color: rgb(52, 128, 122); */
   margin-bottom: 25px;
 }
 
-.comment-card * a {
+/* .comment-card * a {
   color: rgb(0, 70, 64);
-}
+} */
 
 .comment-card p {
   font-weight: 500;
+}
+
+.card-light {
+  background-color: rgb(213, 247, 244);
+  box-shadow: 1px 1px 1px #0F2E33;
+}
+
+.card-light h4 {
+  color: #34807a;
+}
+
+.card-light * a {
+  color: rgb(0, 70, 64);
+}
+
+.card-dark {
+  background-color: #184C54;
+  box-shadow: 1px 1px 1px #7CBAB5;
+}
+
+.card-dark h4 {
+  color: #3E9991;
+}
+
+.card-dark * a {
+  color: #4ECDC4;
 }
 
 .content {
