@@ -1,0 +1,148 @@
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#app, #root {
+  min-height: 100%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+p {
+  color: rgb(26, 71, 78);
+  letter-spacing: 0.35px;
+}
+
+.light {
+  background-color: #F7FFF7;
+}
+
+.dark {
+  background-color: #0F2E33;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 50px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+}
+
+#button-context {
+  margin-left: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.pad {
+  padding-left: 40px;
+  padding-bottom: 10px;
+}
+
+.pad .story {
+  font-size: 25px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
+}
+
+.link-story-light {
+  color: #FF6B6B;
+  text-decoration: none;
+}
+
+.link-minor-light {
+  color: #4ECDC4;
+  text-decoration: none;
+}
+
+h3 {
+  margin: 6px auto;
+  margin-top: 30px;
+}
+
+h4 {
+  margin: 6px auto;
+  font-weight: 300;
+}
+
+.metainfo {
+  margin-top: 0px;
+}
+
+.metainfo a {
+  text-decoration: underline;
+}
+
+.comment-card {
+  background-color: rgb(213, 247, 244);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-shadow: 1px 1px 1px #0F2E33;
+}
+
+.comment-card h4 {
+  color: rgb(52, 128, 122);
+  margin-bottom: 25px;
+}
+
+.comment-card * a {
+  color: rgb(0, 70, 64);
+}
+
+.comment-card p {
+  font-weight: 500;
+}
+
+.content {
+  padding-left: 40px;
+}
+
+.content h1 {
+  color: #FF6B6B;
+  margin-bottom: 0px;
+}
+
+.content > div > p {
+  padding-left: 20px;
+}
+
+.content div ul {
+  padding-left: 0px;
+}
+
+.content div > h2 {
+  margin-top: 40px;
+}
+
+strong {
+  font-weight: 600;
+  color: #4ECDC4;
+}

@@ -33,10 +33,9 @@ export default class Post extends React.Component {
       <React.Fragment>
         {loadingStory && <Loading text="Fetching story" />}
 
-        {(!loadingStory && loadingComments) && <Loading text="Fetching comments" />}
-
         {story && (
           <StoryCard
+            cssClass="pad"
             by={story.by}
             kids={comments || []}
             title={story.title}
@@ -45,6 +44,8 @@ export default class Post extends React.Component {
             id={story.id}
           />
         )}
+
+        {(!loadingStory && loadingComments) && <Loading text="Fetching comments" />}
 
         {comments && <CommentList comments={comments} />}
 

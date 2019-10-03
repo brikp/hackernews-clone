@@ -20,19 +20,20 @@ class App extends React.Component {
 
   render() {
     const { theme } = this.state;
-    const style = theme === 'light' ? { background: 'rgb(255, 215, 0)' } : { background: 'rgb(255, 191, 116)' };
     return (
       <Router>
         <ThemeProvider value={this.state}>
-          <div style={style}>
-            <NavBar />
-            <Switch>
-              <Route exact path="/" component={Top} />
-              <Route exact path="/new" component={New} />
-              <Route path="/user" component={User} />
-              <Route path="/post" component={Post} />
-              <Route render={() => <h1>404</h1>} />
-            </Switch>
+          <div id="app" className={theme}>
+            <div className="container">
+              <NavBar />
+              <Switch>
+                <Route exact path="/" component={Top} />
+                <Route exact path="/new" component={New} />
+                <Route path="/user" component={User} />
+                <Route path="/post" component={Post} />
+                <Route render={() => <h1>404</h1>} />
+              </Switch>
+            </div>
           </div>
         </ThemeProvider>
       </Router>

@@ -6,7 +6,7 @@ import { convertUnixTimeToDateTimeString, createMarkup } from '../utils/commonFu
 export default function PostCard({ by, time, text }) {
   const dateTime = convertUnixTimeToDateTimeString(time);
   return (
-    <React.Fragment>
+    <div className="comment-card">
       <h4>
         {'by '}
         <Link to={{
@@ -20,7 +20,7 @@ export default function PostCard({ by, time, text }) {
       </h4>
       {/* eslint-disable-next-line react/no-danger */}
       <p dangerouslySetInnerHTML={createMarkup(text)} />
-    </React.Fragment>
+    </div>
   );
 }
 
