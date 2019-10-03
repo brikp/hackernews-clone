@@ -33,6 +33,7 @@ class App extends React.Component {
                 <Route path="/post" component={Post} />
                 <Route render={() => <h1>404</h1>} />
               </Switch>
+
             </div>
           </div>
         </ThemeProvider>

@@ -16,6 +16,10 @@ p {
   letter-spacing: 0.35px;
 }
 
+#gh-icon {
+  margin-left: 15px;
+}
+
 .light {
   background-color: #F7FFF7;
   color: rgb(26, 71, 78);
