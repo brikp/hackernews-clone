@@ -6,12 +6,13 @@ export default function StoryList({ stories }) {
   return (
     <ul>
       {stories.map((story) => {
+        if (!story) return null;
         const {
           by, kids, id, time, title, url, type,
         } = story;
         const checkedUrl = url || `/post?id=${id}`;
 
-        if (type !== 'story') return null;
+        if (type !== 'story' || story.deleted) return null;
         return (
           <li key={id}>
             <StoryCard

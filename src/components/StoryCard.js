@@ -8,7 +8,6 @@ export default function StoryCard({
   by, time, title, url, id, kids, cssClass,
 }) {
   const dateTime = convertUnixTimeToDateTimeString(time);
-  // If there is no URL - this is a askHN story and should link to /post route
   return (
     <ThemeConsumer>
       {({ theme }) => (
