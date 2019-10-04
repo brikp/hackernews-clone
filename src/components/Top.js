@@ -36,7 +36,7 @@ export default class Top extends React.Component {
 
         {error && <p>{error}</p>}
 
-        {stories.length && <StoryList stories={stories} />}
+        {stories && <StoryList stories={stories} />}
       </React.Fragment>
     );
   }
