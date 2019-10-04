@@ -1,7 +1,7 @@
 import React from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import { fetchStoryComments, fetchItem } from '../utils/api';
+import { fetchComments, fetchItem } from '../utils/api';
 import Loading from './Loading';
 import StoryCard from './StoryCard';
 import CommentList from './CommentList';
@@ -20,7 +20,7 @@ export default class Post extends React.Component {
     fetchItem(id)
       .then((story) => {
         this.setState({ story, loadingStory: false });
-        fetchStoryComments(story)
+        fetchComments(story)
           .then((res) => {
             this.setState({ comments: res, loadingComments: false });
           });

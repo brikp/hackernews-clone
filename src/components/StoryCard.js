@@ -8,15 +8,13 @@ export default function StoryCard({
   by, time, title, url, id, kids, cssClass,
 }) {
   const dateTime = convertUnixTimeToDateTimeString(time);
-  // If there is no URL - this is a askHN story and should link to /post route
-  const checkedUrl = url || `/post?id=${id}`;
   return (
     <ThemeConsumer>
       {({ theme }) => (
         <div className={`story-row ${cssClass}`}>
           <div className="story">
             <h3>
-              <a className={`link-story-${theme}`} href={checkedUrl}>{title}</a>
+              <a className={`link-story-${theme}`} href={url}>{title}</a>
             </h3>
           </div>
           <div className="metainfo">
