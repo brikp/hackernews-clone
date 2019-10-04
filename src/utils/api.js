@@ -1,3 +1,4 @@
+// https://github.com/HackerNews/API
 const apiURL = 'https://hacker-news.firebaseio.com/v0';
 const params = '.json';
 

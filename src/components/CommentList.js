@@ -6,6 +6,7 @@ export default function CommentList({ comments }) {
   return (
     <ul>
       {comments.length > 0 && comments.map((comment) => {
+        if (!comment || comment.deleted) return null;
         const { id, by, time, text } = comment;
 
         return (

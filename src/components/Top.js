@@ -29,7 +29,6 @@ export default class Top extends React.Component {
 
   render() {
     const { stories, error } = this.state;
-
     return (
       <React.Fragment>
         {this.isLoading() && <Loading text="Fetching top stories" />}

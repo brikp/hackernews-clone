@@ -9,6 +9,7 @@ export default function StoryList({ stories }) {
         const {
           by, kids, id, time, title, url, type,
         } = story;
+        const checkedUrl = url || `/post?id=${id}`;
 
         if (type !== 'story') return null;
         return (
@@ -18,7 +19,7 @@ export default function StoryList({ stories }) {
               kids={kids || []}
               title={title}
               time={time}
-              url={url}
+              url={checkedUrl}
               id={id}
             />
           </li>
