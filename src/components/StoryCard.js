@@ -10,7 +10,7 @@ export default function StoryCard({
   const dateTime = convertUnixTimeToDateTimeString(time);
   return (
     <ThemeConsumer>
-      {({ theme }) => (
+      {([theme]) => (
         <div className={`story-row ${cssClass}`}>
           <div className="story">
             <h3>

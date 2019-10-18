@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,36 +13,26 @@ const styles = {
   },
 };
 
-export default class Loading extends React.Component {
-  state = {
-    content: this.props.text,
-  }
+function Loading({ text = 'Loading', speed = 250 }) {
+  const [content, setContent] = React.useState(text);
 
-  componentDidMount() {
-    const { text, speed } = this.props;
-
-
-    this.interval = window.setInterval(() => {
-      const { content } = this.state;
+  React.useEffect(() => {
+    const interval = window.setInterval(() => {
       content === `${text}...`
-        ? this.setState({ content: text })
-        // eslint-disable-next-line no-shadow
-        : this.setState(({ content }) => ({ content: `${content}.` }));
+        ? setContent(text)
+        : setContent((prevContent) => `${prevContent}.`);
     }, speed);
-  }
 
-  componentWillUnmount() {
-    window.clearInterval(this.interval);
-  }
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [content, speed, text]);
 
-  render() {
-    const { content } = this.state;
-    return (
-      <p style={styles.content}>
-        {content}
-      </p>
-    );
-  }
+  return (
+    <p style={styles.content}>
+      {content}
+    </p>
+  );
 }
 
 Loading.propTypes = {
@@ -49,7 +40,4 @@ Loading.propTypes = {
   speed: PropTypes.number,
 };
 
-Loading.defaultProps = {
-  text: 'Loading',
-  speed: 250,
-};
+export default Loading;

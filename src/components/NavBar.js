@@ -10,7 +10,7 @@ const style = {
 export default function NavBar() {
   return (
     <ThemeConsumer>
-      {({ theme, toggleTheme }) => (
+      {([theme, setTheme]) => (
         <nav className="row nav">
           <ul className="row">
             <li>
@@ -29,7 +29,7 @@ export default function NavBar() {
             style={{ fontSize: 30 }}
             className="btn-clear"
             id="button-context"
-            onClick={toggleTheme}
+            onClick={() => setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))}
             type="button"
           >
             {theme === 'light' ? '🔦' : '💡'}
