@@ -8,7 +8,7 @@ export default function PostCard({ by, time, text }) {
   const dateTime = convertUnixTimeToDateTimeString(time);
   return (
     <ThemeConsumer>
-      {({ theme }) => (
+      {([theme]) => (
         <div className={`comment-card card-${theme}`}>
           <h4>
             {'by '}
